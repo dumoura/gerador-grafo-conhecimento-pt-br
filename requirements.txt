@@ -1,18 +1,17 @@
+# Web UI
+streamlit
+
 # Core LLM and LangChain packages
-langchain==0.3.7
-langchain-experimental==0.3.7
-langchain-openai==0.2.8
-langchain-core==0.3.15
+langchain
+langchain-experimental
+langchain-openai
 
 # Environment variable support
-python-dotenv==1.0.1
+python-dotenv
 
 # Graph visualization
-pyvis==0.3.2
+pyvis
 
-# Web UI
-streamlit==1.39.0
-
-# Additional dependencies for better compatibility
-pydantic==2.9.2
-typing-extensions==4.12.2
+# Additional dependencies
+pydantic
+typing-extensions
