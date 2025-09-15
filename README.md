@@ -82,10 +82,23 @@ Isso iniciará a aplicação e a abrirá em seu navegador padrão (tipicamente e
 
 ## ☁️ Deploy no Streamlit Cloud
 
-### Configuração de Variáveis de Ambiente
+### Configuração de Secrets
 
-No Streamlit Cloud, você precisa configurar as seguintes variáveis de ambiente:
+No Streamlit Cloud, você pode configurar os secrets de duas formas:
 
+#### **Opção 1: Interface Web (Recomendado)**
+1. Acesse sua aplicação no Streamlit Cloud
+2. Clique em "Settings" → "Secrets"
+3. Adicione o conteúdo TOML:
+
+```toml
+[openai]
+api_key = "sua_chave_da_api_openai_aqui"
+model = "gpt-4o"
+temperature = 0
+```
+
+#### **Opção 2: Variáveis de Ambiente**
 1. **OPENAI_API_KEY**: Sua chave da API OpenAI (obrigatória)
 2. **OPENAI_MODEL**: Modelo a ser usado (opcional, padrão: gpt-4o)
 3. **OPENAI_TEMPERATURE**: Temperatura do modelo (opcional, padrão: 0)

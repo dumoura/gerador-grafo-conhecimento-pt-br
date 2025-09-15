@@ -6,16 +6,33 @@ from pyvis.network import Network
 from dotenv import load_dotenv
 import os
 import asyncio
+import streamlit as st
 
 
-# Carrega o arquivo .env
+# Carrega o arquivo .env (para desenvolvimento local)
 load_dotenv()
-# Obtém a chave da API das variáveis de ambiente
-api_key = os.getenv("OPENAI_API_KEY")
+
+# Função para obter a chave da API
+def get_openai_api_key():
+    """Obtém a chave da API OpenAI de diferentes fontes"""
+    # 1. Tenta obter das variáveis de ambiente
+    api_key = os.getenv("OPENAI_API_KEY")
+    
+    # 2. Se não encontrar, tenta obter dos secrets do Streamlit
+    if not api_key and hasattr(st, 'secrets'):
+        try:
+            api_key = st.secrets["openai"]["api_key"]
+        except (KeyError, AttributeError):
+            pass
+    
+    return api_key
+
+# Obtém a chave da API
+api_key = get_openai_api_key()
 
 # Verifica se a chave da API está configurada
 if not api_key:
-    raise ValueError("OPENAI_API_KEY não encontrada. Configure a variável de ambiente OPENAI_API_KEY.")
+    raise ValueError("OPENAI_API_KEY não encontrada. Configure a variável de ambiente OPENAI_API_KEY ou o secret no Streamlit Cloud.")
 
 # Configura o modelo LLM
 llm = ChatOpenAI(
