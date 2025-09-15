@@ -1,0 +1,52 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: Lint with flake8
+      run: |
+        pip install flake8
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+    
+    - name: Test imports
+      run: |
+        python -c "import streamlit; print('Streamlit OK')"
+        python -c "import langchain; print('LangChain OK')"
+        python -c "import pyvis; print('PyVis OK')"
+        python -c "from dotenv import load_dotenv; print('python-dotenv OK')"
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Deploy to Streamlit Cloud
+      uses: streamlit/streamlit-cloud-action@v1
+      with:
+        streamlit-app-path: app.py
+        secrets: |
+          OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}

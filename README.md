@@ -14,23 +14,37 @@ Aplicação Streamlit que extrai dados de grafo (entidades e relacionamentos) de
 - Exibição de grafo personalizável com layout baseado em física
 - Extração de relacionamentos entre entidades alimentada pelo modelo GPT-4o da OpenAI
 
-## Instalação
+## 🚀 Deploy Rápido no Streamlit Cloud
 
-### Pré-requisitos
+### Opção 1: Deploy Automático (Recomendado)
+
+[![Deploy](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/deploy)
+
+1. **Fork este repositório** no GitHub
+2. **Acesse** [Streamlit Cloud](https://share.streamlit.io/)
+3. **Conecte sua conta GitHub** e selecione este repositório
+4. **Configure as variáveis de ambiente:**
+   - `OPENAI_API_KEY`: Sua chave da API OpenAI
+5. **Clique em "Deploy"** e aguarde alguns minutos
+6. **Acesse sua aplicação** no link fornecido
+
+### Opção 2: Instalação Local
+
+#### Pré-requisitos
 
 - Python 3.8 ou superior
 - Chave da API OpenAI
 
-### Dependências
+#### Dependências
 
 A aplicação requer os seguintes pacotes Python:
 
-- langchain (>= 0.1.0): Framework principal de LLM
-- langchain-experimental (>= 0.0.45): Recursos experimentais do LangChain
-- langchain-openai (>= 0.1.0): Integração OpenAI para LangChain
-- python-dotenv (>= 1.0.0): Suporte a variáveis de ambiente
-- pyvis (>= 0.3.2): Visualização de grafos
-- streamlit (>= 1.32.0): Framework de interface web
+- langchain (== 0.3.7): Framework principal de LLM
+- langchain-experimental (== 0.3.7): Recursos experimentais do LangChain
+- langchain-openai (== 0.2.8): Integração OpenAI para LangChain
+- python-dotenv (== 1.0.1): Suporte a variáveis de ambiente
+- pyvis (== 0.3.2): Visualização de grafos
+- streamlit (== 1.39.0): Framework de interface web
 
 Instale todas as dependências necessárias usando o arquivo requirements.txt fornecido:
 
@@ -38,22 +52,25 @@ Instale todas as dependências necessárias usando o arquivo requirements.txt fo
 pip install -r requirements.txt
 ```
 
-### Configuração
+#### Configuração
 
 1. Clone este repositório:
    ```bash
-   git clone [url-do-repositório]
-   cd knowledge_graph_app_2
+   git clone https://github.com/SEU_USUARIO/gerador-grafo-conhecimento-pt-br.git
+   cd gerador-grafo-conhecimento-pt-br
    ```
 
-   Nota: Substitua `[url-do-repositório]` pela URL real deste repositório.
+2. Copie o arquivo de exemplo de configuração:
+   ```bash
+   cp .env.example .env
+   ```
 
-2. Crie um arquivo `.env` no diretório raiz com sua chave da API OpenAI:
+3. Edite o arquivo `.env` e adicione sua chave da API OpenAI:
    ```
    OPENAI_API_KEY=sua_chave_da_api_openai_aqui
    ```
 
-## Executando a Aplicação
+#### Executando a Aplicação
 
 Para executar a aplicação Streamlit:
 
@@ -62,6 +79,33 @@ streamlit run app.py
 ```
 
 Isso iniciará a aplicação e a abrirá em seu navegador padrão (tipicamente em http://localhost:8501).
+
+## ☁️ Deploy no Streamlit Cloud
+
+### Configuração de Variáveis de Ambiente
+
+No Streamlit Cloud, você precisa configurar as seguintes variáveis de ambiente:
+
+1. **OPENAI_API_KEY**: Sua chave da API OpenAI (obrigatória)
+2. **OPENAI_MODEL**: Modelo a ser usado (opcional, padrão: gpt-4o)
+3. **OPENAI_TEMPERATURE**: Temperatura do modelo (opcional, padrão: 0)
+
+### Passos para Deploy
+
+1. **Fork** este repositório no GitHub
+2. **Acesse** [share.streamlit.io](https://share.streamlit.io/)
+3. **Conecte** sua conta GitHub
+4. **Selecione** o repositório forkado
+5. **Configure** as variáveis de ambiente na seção "Advanced settings"
+6. **Clique** em "Deploy"
+7. **Aguarde** o deploy ser concluído (2-5 minutos)
+8. **Acesse** sua aplicação no link fornecido
+
+### Troubleshooting
+
+- **Erro de API**: Verifique se a chave da API está correta
+- **Timeout**: Aumente o timeout nas configurações avançadas
+- **Dependências**: Verifique se todas as dependências estão no requirements.txt
 
 ## Como Usar
 

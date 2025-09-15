@@ -13,6 +13,10 @@ load_dotenv()
 # Obtém a chave da API das variáveis de ambiente
 api_key = os.getenv("OPENAI_API_KEY")
 
+# Verifica se a chave da API está configurada
+if not api_key:
+    raise ValueError("OPENAI_API_KEY não encontrada. Configure a variável de ambiente OPENAI_API_KEY.")
+
 # Configura o modelo LLM
 llm = ChatOpenAI(
     temperature=0, 

@@ -130,6 +130,7 @@ dmypy.json
 
 # Streamlit
 .streamlit/
+.streamlit/secrets.toml
 
 # Generated HTML files
 knowledge_graph.html

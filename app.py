@@ -41,18 +41,25 @@ if input_method == "📁 Enviar arquivo txt":
  
         # Button to generate the knowledge graph
         if st.sidebar.button("🚀 Gerar Grafo de Conhecimento", type="primary"):
-            with st.spinner("🔄 Gerando grafo de conhecimento..."):
-                # Call the function to generate the graph from the text
-                net = generate_knowledge_graph(text)
-                st.success("✅ Grafo de conhecimento gerado com sucesso!")
-                
-                # Save the graph to an HTML file
-                output_file = "knowledge_graph.html"
-                net.save_graph(output_file) 
+            try:
+                with st.spinner("🔄 Gerando grafo de conhecimento..."):
+                    # Call the function to generate the graph from the text
+                    net = generate_knowledge_graph(text)
+                    if net:
+                        st.success("✅ Grafo de conhecimento gerado com sucesso!")
+                        
+                        # Save the graph to an HTML file
+                        output_file = "knowledge_graph.html"
+                        net.save_graph(output_file) 
 
-                # Open the HTML file and display it within the Streamlit app
-                HtmlFile = open(output_file, 'r', encoding='utf-8')
-                components.html(HtmlFile.read(), height=1000)
+                        # Open the HTML file and display it within the Streamlit app
+                        HtmlFile = open(output_file, 'r', encoding='utf-8')
+                        components.html(HtmlFile.read(), height=1000)
+                    else:
+                        st.error("❌ Erro ao gerar o grafo de conhecimento. Tente novamente.")
+            except Exception as e:
+                st.error(f"❌ Erro: {str(e)}")
+                st.info("💡 Dica: Verifique se sua chave da API OpenAI está configurada corretamente.")
 
 # Case 2: User chooses to directly input text
 else:
@@ -64,18 +71,25 @@ else:
         st.sidebar.info(f"📊 Texto inserido: {len(text)} caracteres")
         
         if st.sidebar.button("🚀 Gerar Grafo de Conhecimento", type="primary"):
-            with st.spinner("🔄 Gerando grafo de conhecimento..."):
-                # Call the function to generate the graph from the input text
-                net = generate_knowledge_graph(text)
-                st.success("✅ Grafo de conhecimento gerado com sucesso!")
-                
-                # Save the graph to an HTML file
-                output_file = "knowledge_graph.html"
-                net.save_graph(output_file) 
+            try:
+                with st.spinner("🔄 Gerando grafo de conhecimento..."):
+                    # Call the function to generate the graph from the input text
+                    net = generate_knowledge_graph(text)
+                    if net:
+                        st.success("✅ Grafo de conhecimento gerado com sucesso!")
+                        
+                        # Save the graph to an HTML file
+                        output_file = "knowledge_graph.html"
+                        net.save_graph(output_file) 
 
-                # Open the HTML file and display it within the Streamlit app
-                HtmlFile = open(output_file, 'r', encoding='utf-8')
-                components.html(HtmlFile.read(), height=1000)
+                        # Open the HTML file and display it within the Streamlit app
+                        HtmlFile = open(output_file, 'r', encoding='utf-8')
+                        components.html(HtmlFile.read(), height=1000)
+                    else:
+                        st.error("❌ Erro ao gerar o grafo de conhecimento. Tente novamente.")
+            except Exception as e:
+                st.error(f"❌ Erro: {str(e)}")
+                st.info("💡 Dica: Verifique se sua chave da API OpenAI está configurada corretamente.")
 
 # Add instructions in the main area
 if not text:
