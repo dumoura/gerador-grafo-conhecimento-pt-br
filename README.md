@@ -3,9 +3,9 @@
 Aplicação Streamlit que extrai dados de grafo (entidades e relacionamentos) de texto usando LangChain e modelos GPT da OpenAI, e gera grafos interativos.
 
 ![CleanShot 2025-05-28 at 13 11 46](https://github.com/user-attachments/assets/4fef9158-8dd8-432d-bb8a-b53953a82c6c)
+[link para o app](https://gerador-grafo-conhecimento-pt-br.streamlit.app/)
 
 👉 Este repositório foi inspirado no tutorial de Thu Vu:
-[![](https://img.youtube.com/vi/O-T_6KOXML4/0.jpg)](https://www.youtube.com/watch?v=O-T_6KOXML4)
 
 ## Funcionalidades
 
