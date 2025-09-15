@@ -1,7 +1,0 @@
-# Arquivo de pacotes do sistema para Streamlit Cloud
-# Este arquivo é usado para instalar dependências do sistema
-
-# Se necessário, adicione pacotes do sistema aqui
-# Exemplo:
-# libgomp1
-# libgcc-s1

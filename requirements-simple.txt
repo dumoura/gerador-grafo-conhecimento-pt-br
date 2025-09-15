@@ -1,4 +1,3 @@
-# Versão simplificada para Streamlit Cloud
 streamlit
 langchain
 langchain-experimental
